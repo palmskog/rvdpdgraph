@@ -1,0 +1,5 @@
+(coq.theory
+ (name rvdpdgraph)
+ (package coq-rvdpdgraph)
+ (libraries coq-rvdpdgraph.plugin)
+ (synopsis "RV dependency graph plugin for Coq"))
