@@ -3,23 +3,21 @@
 (ocamlyacc dpd_parse)
 
 (executable
- (name dpdusage)
+ (name rvdpdusage)
  (public_name rvdpdusage)
  (libraries coq-rvdpdgraph.rvdpdlib)
  (package coq-rvdpdgraph)
- (modules dpdusage))
+ (modules rvdpdusage))
 
 (executable
- (name dpd2dot)
+ (name rvdpd2dot)
  (public_name rvdpd2dot)
  (libraries coq-rvdpdgraph.rvdpdlib)
  (package coq-rvdpdgraph)
- (modules dpd2dot))
+ (modules rvdpd2dot))
 
 (library
  (name rvdpdlib)
  (public_name coq-rvdpdgraph.rvdpdlib)
  (libraries ocamlgraph)
  (modules dpd_compute dpd_lex dpd_parse version dpd_dot))
-
-

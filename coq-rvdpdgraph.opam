@@ -2,9 +2,9 @@ synopsis:     "RV dependency graph plugin for Coq"
 opam-version: "2.0"
 maintainer:   "palmskog@gmail.com"
 authors:      ["Karl Palmskog" "Yves Bertot" "Anne Pacelet"]
-homepage:     "https://github.com/proofengineering/coq-dpdgraph"
-bug-reports:  "https://github.com/proofengineering/coq-dpdgraph/issues"
-dev-repo:     "git+https://github.com/proofengineering/coq-dpdgraph"
+homepage:     "https://github.com/palmskog/rvdpdgraph"
+bug-reports:  "https://github.com/palmskog/rvdpdgraph/issues"
+dev-repo:     "git+https://github.com/palmskog/rvdpdgraph"
 license:      "LGPL-2.1-only"
 
 depends: [
