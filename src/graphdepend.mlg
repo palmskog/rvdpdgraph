@@ -65,9 +65,7 @@ module G = struct
       in Libnames.string_of_qualid qualid
 
     let split_name n =
-      let qualid =
-        Nametab.shortest_qualid_of_global Names.Id.Set.empty (gref n) in
-      let dirpath, ident = Libnames.repr_qualid qualid in
+      let dirpath, ident = Libnames.repr_path (Nametab.path_of_global (gref n)) in
       let dirpath = Names.DirPath.to_string dirpath in
       let dirpath = if dirpath = "<>" then "" else dirpath in
       let name = Names.Id.to_string ident in
