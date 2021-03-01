@@ -38,15 +38,11 @@ let split_string s i =
     s1, s2
 
 let mk_url n =
-  let df, dm = match Node.get_attrib "path" n with
-    | None -> "", ""
-    | Some d ->
-        try let i = String.index d '.' in
-        let df, dm = split_string d i in
-          df, dm^"."
-        with Not_found -> d, ""
+  let df = match Node.get_attrib "path" n with
+    | None -> ""
+    | Some d -> d
   in
-  df^".html"^"#"^dm^(Node.name n)
+  df^".html"^"#"^(Node.name n)
 
 let node_attribs g n =
   let attr = [] in
