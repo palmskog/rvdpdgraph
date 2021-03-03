@@ -1,12 +1,19 @@
-synopsis:     "RV dependency graph plugin for Coq"
 opam-version: "2.0"
-maintainer:   "palmskog@gmail.com"
-authors:      ["Karl Palmskog" "Yves Bertot" "Anne Pacelet"]
-homepage:     "https://github.com/palmskog/rvdpdgraph"
-bug-reports:  "https://github.com/palmskog/rvdpdgraph/issues"
-dev-repo:     "git+https://github.com/palmskog/rvdpdgraph"
-license:      "LGPL-2.1-only"
+maintainer: "palmskog@gmail.com"
+version: "dev"
 
+homepage: "https://github.com/palmskog/rvdpdgraph"
+dev-repo: "git+https://github.com/palmskog/rvdpdgraph"
+bug-reports: "https://github.com/palmskog/rvdpdgraph/issues"
+license: "LGPL-2.1-only"
+
+synopsis: "RV dependency graph plugin for Coq"
+description: """
+Modified version of dpdgraph Coq plugin,
+with full path links for coqdoc compatibility.
+"""
+
+build: [ "dune" "build" "-p" name "-j" jobs ]
 depends: [
   "ocaml"         { >= "4.07.1"            }
   "coq"           { >= "8.12.0" & < "8.13" }
@@ -14,4 +21,8 @@ depends: [
   "ocamlgraph"    { >= "2.0.0"             }
 ]
 
-build: [ "dune" "build" "-p" name "-j" jobs ]
+authors: [
+ "Anne Pacelet"
+ "Yves Bertot"
+ "Karl Palmskog"
+]
