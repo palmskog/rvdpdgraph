@@ -261,7 +261,7 @@ let locate_mp_dirpath qid =
 
 }
 
-VERNAC COMMAND EXTEND DependGraphSetFile CLASSIFIED AS QUERY
+VERNAC COMMAND EXTEND DependGraphSetFile CLASSIFIED AS SIDEFF
 | ["Set" "DependGraph" "File" string(str)] -> { filename := str }
 END
 
@@ -276,7 +276,7 @@ VERNAC ARGUMENT EXTEND dirlist
 END
 *)
 
-VERNAC COMMAND EXTEND DependGraph CLASSIFIED AS QUERY
+VERNAC COMMAND EXTEND DependGraph CLASSIFIED AS SIDEFF
   | ["Print" "DependGraph" reference(ref) ] ->
       { mk_dpds_graph (Nametab.global ref) }
   | ["Print" "FileDependGraph" reference_list(dl) ] ->
