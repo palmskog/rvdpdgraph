@@ -69,6 +69,7 @@ let node_attribs g n =
   let url = mk_url n in
   let attr = (Aid "URL", Aurl url)::attr in
   let attr = (Aid "label", Astr label)::attr in
+  let attr = (Aid "target", Astr "_top")::attr in
     attr
 
 let add_node_in_subgraph sg_tbl n sg =
