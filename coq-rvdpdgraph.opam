@@ -16,13 +16,14 @@ with full path links for coqdoc compatibility.
 build: [ "dune" "build" "-p" name "-j" jobs ]
 depends: [
   "ocaml"         { >= "4.07.1"            }
-  "coq"           { >= "8.12.0" & < "8.13" }
+  "coq"           { >= "8.13" & < "8.14"   }
   "dune"          { >= "2.5"               }
   "ocamlgraph"    { >= "2.0.0"             }
 ]
 
 authors: [
- "Anne Pacelet"
+ "Anne Pacalet"
  "Yves Bertot"
+ "Olivier Pons"
  "Karl Palmskog"
 ]

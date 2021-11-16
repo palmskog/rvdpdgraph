@@ -56,7 +56,7 @@ module G = struct
     type t = int * Names.GlobRef.t
     let id n = fst n
     let gref n = snd n
-    let compare n1 n2 = compare (id n1) (id n2)
+    let compare n1 n2 = Pervasives.compare (id n1) (id n2)
     let equal n1 n2 = 0 = compare n1 n2
 
     let full_name n =
@@ -65,7 +65,9 @@ module G = struct
       in Libnames.string_of_qualid qualid
 
     let split_name n =
-      let dirpath, ident = Libnames.repr_path (Nametab.path_of_global (gref n)) in
+      let qualid =
+        Nametab.shortest_qualid_of_global Names.Id.Set.empty (gref n) in
+      let dirpath, ident = Libnames.repr_qualid qualid in
       let dirpath = Names.DirPath.to_string dirpath in
       let dirpath = if dirpath = "<>" then "" else dirpath in
       let name = Names.Id.to_string ident in
@@ -196,16 +198,16 @@ end = struct
     let is_prop = is_prop gref id in
     let acc = ("prop", if is_prop then "yes" else "no")::acc in
     let acc = match gref with
-      | Names.GlobRef.ConstRef cnst ->
+      | Globnames.ConstRef cnst ->
           let acc = ("kind", "cnst")::acc in
             add_cnst_attrib acc cnst
-      | Names.GlobRef.IndRef _ ->
+      | Globnames.IndRef _ ->
           let acc = ("kind", "inductive")::acc in
             acc
-      | Names.GlobRef.ConstructRef _ ->
+      | Globnames.ConstructRef _ ->
           let acc = ("kind", "construct")::acc in
             acc
-      | Names.GlobRef.VarRef _ -> assert false
+      | Globnames.VarRef _ -> assert false
     in acc
 
   let pp_attribs fmt attribs =
