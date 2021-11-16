@@ -20,4 +20,5 @@
  (name rvdpdlib)
  (public_name coq-rvdpdgraph.rvdpdlib)
  (libraries ocamlgraph)
+ (flags :standard -w -3)
  (modules dpd_compute dpd_lex dpd_parse version dpd_dot))
