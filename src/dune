@@ -3,7 +3,7 @@
  (public_name coq-rvdpdgraph.plugin)
  (synopsis "RV dpdgraph Coq plugin")
  (flags :standard -rectypes -w -3-9-27-32)
- (libraries coq.vernac))
+ (libraries coq-core.vernac))
 
 (coq.pp (modules graphdepend))
 (coq.pp (modules searchdepend))

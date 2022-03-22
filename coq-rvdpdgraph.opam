@@ -16,7 +16,7 @@ with full path links for coqdoc compatibility.
 build: [ "dune" "build" "-p" name "-j" jobs ]
 depends: [
   "ocaml"         { >= "4.07.1"            }
-  "coq"           { >= "8.13" & < "8.14"   }
+  "coq"           { >= "8.15" & < "8.16"   }
   "dune"          { >= "2.5"               }
   "ocamlgraph"    { >= "2.0.0"             }
 ]

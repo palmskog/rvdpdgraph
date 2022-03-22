@@ -39,7 +39,7 @@ try
   let t, ctx = Typeops.type_of_global_in_context (Global.env()) gref in
 (* Beware of this code, not considered entirely correct, but I don't know
    how to fix it. *)
-  let env = Environ.push_context ~strict:false (Univ.AUContext.repr ctx)
+  let env = Environ.push_context ~strict:false (Univ.AbstractContext.repr ctx)
             (Global.env ()) in
   let s = (Typeops.infer_type env t).Environ.utj_type in
   Sorts.is_prop s
@@ -56,7 +56,7 @@ module G = struct
     type t = int * Names.GlobRef.t
     let id n = fst n
     let gref n = snd n
-    let compare n1 n2 = Pervasives.compare (id n1) (id n2)
+    let compare n1 n2 = compare (id n1) (id n2)
     let equal n1 n2 = 0 = compare n1 n2
 
     let full_name n =
@@ -196,16 +196,16 @@ end = struct
     let is_prop = is_prop gref id in
     let acc = ("prop", if is_prop then "yes" else "no")::acc in
     let acc = match gref with
-      | Globnames.ConstRef cnst ->
+      | Names.GlobRef.ConstRef cnst ->
           let acc = ("kind", "cnst")::acc in
             add_cnst_attrib acc cnst
-      | Globnames.IndRef _ ->
+      | Names.GlobRef.IndRef _ ->
           let acc = ("kind", "inductive")::acc in
             acc
-      | Globnames.ConstructRef _ ->
+      | Names.GlobRef.ConstructRef _ ->
           let acc = ("kind", "construct")::acc in
             acc
-      | Globnames.VarRef _ -> assert false
+      | Names.GlobRef.VarRef _ -> assert false
     in acc
 
   let pp_attribs fmt attribs =
@@ -276,7 +276,7 @@ VERNAC ARGUMENT EXTEND dirlist
 END
 *)
 
-VERNAC COMMAND EXTEND DependGraph CLASSIFIED AS SIDEFF
+VERNAC COMMAND EXTEND DependGraph CLASSIFIED AS QUERY
   | ["Print" "DependGraph" reference(ref) ] ->
       { mk_dpds_graph (Nametab.global ref) }
   | ["Print" "FileDependGraph" reference_list(dl) ] ->
