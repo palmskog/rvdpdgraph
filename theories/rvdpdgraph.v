@@ -1,1 +1,1 @@
-Declare ML Module "rvdpdgraph".
+Declare ML Module "coq-rvdpdgraph.plugin".

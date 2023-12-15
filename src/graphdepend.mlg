@@ -7,7 +7,7 @@
 (*        (see the enclosed LICENSE file for mode details)                    *)
 (*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*)
 
-DECLARE PLUGIN "dpdgraph"
+DECLARE PLUGIN "coq-rvdpdgraph.plugin"
 
 {
 
@@ -261,7 +261,7 @@ let locate_mp_dirpath qid =
 
 }
 
-VERNAC COMMAND EXTEND DependGraphSetFile CLASSIFIED AS SIDEFF
+VERNAC COMMAND EXTEND DependGraphSetFile CLASSIFIED AS QUERY
 | ["Set" "DependGraph" "File" string(str)] -> { filename := str }
 END
 
